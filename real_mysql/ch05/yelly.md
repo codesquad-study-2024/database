@@ -180,13 +180,13 @@ RENAME TABLE rank_new TO rank;
 - 커밋되지 않은 레코드도 읽을 수 있다.
   - `dirty read` 문제가 발생한다.
   - `non-repeatable read` 문제가 발생한다.
-  - `pantom read` 문제가 발생한다.
+  - `phantom read` 문제가 발생한다.
   - 당연히 정합성 문제가 발생한다.
 
 ## READ COMMITED
 - `dirty read` 문제는 발생하지 않는다.
 - `non-repeatable read` 문제가 발생한다.
-- `pantom read` 문제가 발생한다.
+- `phantom read` 문제가 발생한다.
 - `언두 영역`의 가장 최신 버전에 해당하는 레코드를 가져온다.
   - 트랜잭션 없이 실행되기 때문에 다른 트랜잭션에서 변경 사항이 반영된다.
   - `pantom read` 문제가 발생할 수 있다 = 정합성이 어긋날 수 있다.
@@ -206,4 +206,4 @@ RENAME TABLE rank_new TO rank;
 
 ## SERIALIZABLE
 - `읽기 작업` 마저 공유 잠금(읽기 잠금)을 얻어야 하고, 다른 트랜잭션은 해당 레코드를 변경하지 못한다.
-- `InnoDB` 스토리지 엔진에선 이미 `pantom read` 문제가 발생하지 않기 때문에 굳이 사용하지 않는다.
+- `InnoDB` 스토리지 엔진에선 이미 `phantom read` 문제가 발생하지 않기 때문에 굳이 사용하지 않는다.
